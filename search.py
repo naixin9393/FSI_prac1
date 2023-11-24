@@ -43,7 +43,7 @@ class Problem:
         """Return the cost of a solution path that arrives at state2 from
         state1 via action, assuming cost c to get up to state1. If the problem
         is such that the path doesn't matter, this function will only look at
-        state2.  If the path does matter, it will consider c and maybe state1
+        state2. If the path does matter, it will consider c and maybe state1
         and action. The default method costs 1 for every step in the path."""
         return c + 1
 
@@ -93,14 +93,10 @@ class Node:
 # ______________________________________________________________________________
 ## Uninformed Search algorithms
 
-def graph_search(problem, algorithm):
+def graph_search(problem, fringe):
     """Search through the successors of a problem to find a goal.
     The argument fringe should be an empty queue.
     If two paths reach a state, only use the best one. [Fig. 3.18]"""
-    if algorithm == "dfs":
-        fringe = Stack()
-    else:
-        fringe = FIFOQueue()
     closed = {}
     fringe.append(Node(problem.initial))
     generated = 1
@@ -116,23 +112,31 @@ def graph_search(problem, algorithm):
             fringe_size = len(fringe)
             fringe.extend(node.expand(problem))
             generated += len(fringe) - fringe_size
-        if algorithm == "bnb":
-            fringe.sortBy("path_cost")
     return None
 
 
 def breadth_first_graph_search(problem):
     """Search the shallowest nodes in the search tree first. [p 74]"""
-    #return graph_search(problem, FIFOQueue())  # FIFOQueue -> fringe
-    return graph_search(problem, "bfs")  # FIFOQueue -> fringe
+    return graph_search(problem, FIFOQueue())  # FIFOQueue -> fringe
 
 
 def depth_first_graph_search(problem):
     """Search the deepest nodes in the search tree first. [p 74]"""
-    return graph_search(problem, "dfs")
+    return graph_search(problem, Stack())  # Stack -> fringe
+
 
 def branch_and_bound_graph_search(problem):
-    return graph_search(problem, "bnb")
+    def pathCost(node):
+        return node.path_cost
+
+    return graph_search(problem, PriorityQueue(pathCost))  # PriorityQueue -> fringe
+
+
+def branch_and_bound_heuristic_graph_search(problem):
+    def pathCostPlusHeuristic(node):
+        return node.path_cost + problem.h(node)
+
+    return graph_search(problem, PriorityQueue(pathCostPlusHeuristic))  # PriorityQueue -> fringe
 
 
 # _____________________________________________________________________________

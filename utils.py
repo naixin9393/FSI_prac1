@@ -1,3 +1,4 @@
+import math
 
 #______________________________________________________________________________
 # Simple Data Structures: infinity, Dict, Struct
@@ -543,10 +544,30 @@ class FIFOQueue(Queue):
             self.start = 0
         return e
 
-    def sortBy(self, attribute):
-        self.A.sort(key=lambda item: getattr(item, attribute))
-        return
 
+class PriorityQueue():
+    def __init__(self, sortingAttribute):
+        self.A = []
+        self.start = 0
+        self.__sortingAttribute = sortingAttribute
+
+    def append(self, item):
+        self.A.append(item)
+
+    def __len__(self):
+        return len(self.A) - self.start
+
+    def extend(self, items):
+        self.A.extend(items)
+        self.A.sort(key=self.__sortingAttribute)
+
+    def pop(self):
+        e = self.A[self.start]
+        self.start += 1
+        if self.start > 5 and self.start > len(self.A) / 2:
+            self.A = self.A[self.start:]
+            self.start = 0
+        return e
 
 
 ## Fig: The idea is we can define things like Fig[3,10] later.

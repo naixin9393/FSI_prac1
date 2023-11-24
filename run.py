@@ -7,10 +7,12 @@ ab = search.GPSProblem('A', 'B'
 bfs_generated, bfs_visited, bfs_path = search.breadth_first_graph_search(ab)
 dfs_generated, dfs_visited, dfs_path = search.depth_first_graph_search(ab)
 bnb_generated, bnb_visited, bnb_path = search.branch_and_bound_graph_search(ab)
+bnbh_generated, bnbh_visited, bnbh_path = search.branch_and_bound_heuristic_graph_search(ab)
 
 print("BFS - generated =", bfs_generated, ", visited =", bfs_visited, ", path:", bfs_path)
 print("DFS - generated =", dfs_generated, ", visited =", dfs_visited, ", path:", dfs_path)
 print("BNB - generated =", bnb_generated, ", visited =", bnb_visited, ", path:", bnb_path)
+print("BNBH - generated =", bnbh_generated, ", visited =", bnbh_visited, ", path:", bnbh_path)
 
 # print(search.breadth_first_graph_search(ab).path())
 # print(search.depth_first_graph_search(ab).path())

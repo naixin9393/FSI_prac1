@@ -1,14 +1,13 @@
 # Práctica 1. Búsqueda informada y no informada.
 
 ## Tabla de contenido
-
-1.[Objetivo](#objetivo)
-2.[Algoritmos](#algoritmos)
-   1.[BFS](#bfs)
-   2.[DFS](#dfs)
-   3.[BNB](#bnb)
-   4.[BNBH](#bnbh)
-3.[Resultados](#Resultados)
+1. [Objetivo](#objetivo)
+2. [Algoritmos](#algoritmos)
+   1. [BFS](#bfs)
+   2. [DFS](#dfs)
+   3. [BNB](#bnb)
+   4. [BNBH](#bnbh)
+3. [Resultados](#resultados)
 
 ## Objetivo
 El objetivo de este proyecto es implementar algoritmos de búsqueda informada y no informada en un grafo acíclico y 

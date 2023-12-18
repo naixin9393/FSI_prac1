@@ -1,6 +1,7 @@
 # Práctica 1. Búsqueda informada y no informada.
 
 ## Tabla de contenido
+
 1.[Objetivo](#objetivo)
 2.[Algoritmos](#algoritmos)
    1.[BFS](#bfs)

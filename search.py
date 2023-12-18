@@ -109,9 +109,9 @@ def graph_search(problem, fringe):
             return generated, visited, node.path(), node.path_cost
         if node.state not in closed:
             closed[node.state] = True
-            fringe_size = len(fringe)
-            fringe.extend(node.expand(problem))
-            generated += len(fringe) - fringe_size
+            expansion = node.expand(problem)
+            generated += len(expansion)
+            fringe.extend(expansion)
     return None
 
 

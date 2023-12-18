@@ -1,3 +1,5 @@
+Integrantes: Naixin Chen Zhou y Pablo González Pérez
+
 # Práctica 1. Búsqueda informada y no informada.
 
 ## Tabla de contenido
